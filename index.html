@@ -3,22 +3,599 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threadologie by Lu</title>
-    <meta http-equiv="refresh" content="0; url=privacy-policy.html">
+    <title>Threadologie by Lu - Your Beadwork Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Parisienne&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ivory: #FFFDF7;
+            --champagne: #B8860B;
+            --soft-gold: #D4AF37;
+            --rose-blush: #E6C9C9;
+            --dusty-rose: #C49A9A;
+            --warm-beige: #F5E6D3;
+            --deep-rose: #A67373;
+            --neutral-800: #2E2620;
+            --neutral-600: #6B5E4F;
+            --neutral-300: #E0D5C7;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--neutral-800);
+            background: var(--ivory);
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 253, 247, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(184, 134, 11, 0.05);
             display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo {
+            height: 70px;
+            width: auto;
+        }
+
+        .nav-brand-text {
+            font-family: 'Parisienne', cursive;
+            font-size: 2em;
+            color: var(--champagne);
+            margin: 0;
+            line-height: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            max-height: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 253, 247, 0.95) 0%,
+                rgba(245, 230, 211, 0.9) 50%,
+                rgba(230, 201, 201, 0.85) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            font-weight: 700;
+            color: var(--neutral-800);
+            margin-bottom: 0.3em;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            color: var(--neutral-600);
+            margin-bottom: 1.5em;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: #FDF8F3;
+            flex-wrap: wrap;
+            margin-top: 40px;
         }
-        a { color: #D4AF37; }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 18px 48px;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--soft-gold) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(184, 134, 11, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 18px 48px;
+            background: white;
+            color: var(--champagne);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(184, 134, 11, 0.15);
+            border: 2px solid var(--champagne);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--warm-beige);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.2);
+        }
+
+        .launch-badge {
+            display: inline-block;
+            background: var(--deep-rose);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        .launch-badge:hover {
+            background: var(--champagne);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.35);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 120px 40px;
+            background: linear-gradient(180deg, var(--ivory) 0%, var(--warm-beige) 100%);
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .benefits-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: var(--champagne);
+            margin-bottom: 20px;
+        }
+
+        .benefits-header p {
+            font-size: 1.3em;
+            color: var(--neutral-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--rose-blush) 0%, var(--dusty-rose) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(230, 201, 201, 0.3);
+        }
+
+        .benefit-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: var(--neutral-800);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            font-size: 1.1em;
+            color: var(--neutral-600);
+            line-height: 1.7;
+        }
+
+        /* Notify Section */
+        .notify-section {
+            padding: 100px 40px;
+            background: white;
+            text-align: center;
+        }
+
+        .notify-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .notify-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            color: var(--champagne);
+            margin-bottom: 20px;
+        }
+
+        .notify-container p {
+            font-size: 1.2em;
+            color: var(--neutral-600);
+            margin-bottom: 40px;
+        }
+
+        .notify-form {
+            display: flex;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .notify-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 18px 24px;
+            border: 2px solid var(--neutral-300);
+            border-radius: 50px;
+            font-size: 1em;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .notify-input:focus {
+            outline: none;
+            border-color: var(--champagne);
+            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+        }
+
+        .notify-btn {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--soft-gold) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(184, 134, 11, 0.2);
+        }
+
+        .notify-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(184, 134, 11, 0.3);
+        }
+
+        .privacy-note {
+            margin-top: 25px;
+            font-size: 0.9em;
+            color: var(--neutral-600);
+        }
+
+        .privacy-note a {
+            color: var(--champagne);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .privacy-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--neutral-800);
+            color: var(--warm-beige);
+            padding: 60px 40px 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            height: 180px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--warm-beige);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--soft-gold);
+        }
+
+        .footer-info {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(245, 230, 211, 0.2);
+        }
+
+        .footer-info p {
+            margin: 10px 0;
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+
+        .footer-contact {
+            color: var(--soft-gold);
+            text-decoration: none;
+        }
+
+        .footer-contact:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-logo {
+                height: 55px;
+            }
+
+            .hero {
+                margin-top: 70px;
+                height: 90vh;
+                min-height: 500px;
+            }
+
+            .hero-title {
+                font-size: 2.5em;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .benefits {
+                padding: 80px 20px;
+            }
+
+            .benefits-header h2 {
+                font-size: 2.2em;
+            }
+
+            .benefits-grid {
+                gap: 60px;
+            }
+
+            .notify-section {
+                padding: 80px 20px;
+            }
+
+            .notify-container h2 {
+                font-size: 2em;
+            }
+
+            .notify-form {
+                flex-direction: column;
+            }
+
+            .notify-input {
+                min-width: 100%;
+            }
+
+            footer {
+                padding: 50px 20px 30px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .benefit-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .benefit-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .benefit-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .benefit-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
     </style>
 </head>
 <body>
-    <p>Redirecting to <a href="privacy-policy.html">Privacy Policy</a>...</p>
+    <!-- Navigation -->
+    <nav>
+        <img src="Threadologie-by-Lu_Logo.png" alt="Threadologie by Lu" class="nav-logo">
+        <h1 class="nav-brand-text">Threadologie by Lu</h1>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="hero-beadwork.jpg" alt="Beadwork artisan" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Create Beautiful Beadwork Patterns Effortlessly</h1>
+            <p class="hero-subtitle">Transform your photos into custom bead patterns. Track your progress. Never lose your place again.</p>
+            <div class="hero-cta">
+                <a href="#" style="display: inline-block; transition: transform 0.2s ease;">
+                    <img src="app-store-badge.png" alt="Download on the App Store" style="height: 60px; width: auto;">
+                </a>
+                <a href="#" style="display: inline-block; transition: transform 0.2s ease;">
+                    <img src="google-play-badge.png" alt="Get it on Google Play" style="height: 60px; width: auto;">
+                </a>
+            </div>
+            <div style="margin-top: 30px;">
+                <a href="https://threadologiebylu.etsy.com" target="_blank" rel="noopener noreferrer" class="launch-badge" style="text-decoration: none; cursor: pointer; transition: all 0.3s ease;">
+                    SHOP BEAD PATTERNS ON ETSY
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="benefits-container">
+            <div class="benefits-header">
+                <h2>Everything You Need for Beautiful Beadwork</h2>
+                <p>Designed by beadwork enthusiasts, for beadwork enthusiasts</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📸</div>
+                    <h3>Turn Photos Into Patterns</h3>
+                    <p>Upload any image and watch it transform into a professional bead pattern with accurate color matching and intelligent design tools.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3>Never Lose Your Place</h3>
+                    <p>Tap to mark completed beads, track your progress row-by-row, and pick up exactly where you left off - even weeks later.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔒</div>
+                    <h3>Your Data, Your Device</h3>
+                    <p>Everything stays on your phone. No cloud sync, no subscriptions, complete privacy. Works perfectly offline, anytime, anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="Threadologie-by-Lu_Logo.png" alt="Threadologie by Lu" class="footer-logo">
+
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="https://threadologiebylu.etsy.com" target="_blank" rel="noopener noreferrer">Etsy Shop</a>
+                <a href="mailto:lulu.lab.apps@gmail.com">Contact</a>
+            </div>
+
+            <div class="footer-info">
+                <p><strong>Threadologie by Lu</strong></p>
+                <p>Created by <strong>Lucie Levices</strong></p>
+                <p><a href="mailto:lulu.lab.apps@gmail.com" class="footer-contact">lulu.lab.apps@gmail.com</a></p>
+                <p style="margin-top: 20px;">Crafted with care in Austria 🇦🇹</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
